@@ -9,5 +9,8 @@ householdPowerConsumption[,3:9] <- sapply(householdPowerConsumption[,3:9], as.nu
 householdPowerConsumption$Date <- as.Date(householdPowerConsumption$Date, format = "%d/%m/%Y")
 # Subset dataframe by date of interest
 householdPowerConsumption <- householdPowerConsumption[c(which(householdPowerConsumption$Date == "2007-02-01"), which(householdPowerConsumption$Date == "2007-02-02")),]
+# Open file device
+png(filename = "plot1.png", height = 480, width = 480)
 # Construct histogram
 hist(householdPowerConsumption$Global_active_power, xlab = "Global Active Power (kilowatts)", col = "red", main = "Global Active Power")
+dev.off()
