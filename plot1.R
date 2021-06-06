@@ -10,4 +10,4 @@ householdPowerConsumption$Date <- as.Date(householdPowerConsumption$Date, format
 # Subset dataframe by date of interest
 householdPowerConsumption <- householdPowerConsumption[c(which(householdPowerConsumption$Date == "2007-02-01"), which(householdPowerConsumption$Date == "2007-02-02")),]
 # Construct histogram
-hist(householdPowerConsumption$Global_active_power) # 
+hist(householdPowerConsumption$Global_active_power, xlab = "Global Active Power (kilowatts)", col = "red", main = "Global Active Power")
