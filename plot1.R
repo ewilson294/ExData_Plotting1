@@ -3,5 +3,11 @@
 # Date Created: 5 June 2021
 
 householdPowerConsumption <- read.table("household_power_consumption.txt", header = TRUE, sep = ";")
+# Convert characters in table to numeric values
 householdPowerConsumption[,3:9] <- sapply(householdPowerConsumption[,3:9], as.numeric)
-hist(householdPowerConsumption$Global_active_power)
+# Convert date characters to date objects
+householdPowerConsumption$Date <- as.Date(householdPowerConsumption$Date, format = "%d/%m/%Y")
+# Subset dataframe by date of interest
+
+# Construct histogram
+hist(householdPowerConsumption$Global_active_power) # 
