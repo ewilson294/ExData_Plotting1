@@ -12,5 +12,7 @@ householdPowerConsumption <- householdPowerConsumption[c(which(householdPowerCon
 # Convert time to date objects
 for (tau in 1:length(householdPowerConsumption$Time)) {
     time <- paste(strftime(householdPowerConsumption$Date[tau]), householdPowerConsumption$Time[tau], sep = " ")
-    householdPowerConsumption$Time[tau] <- strptime(time, format = "%Y-%m-%d %R:%S")
+    householdPowerConsumption$Time[tau] <- time
 }
+householdPowerConsumption$Time <- strptime(householdPowerConsumption$Time, format = "%Y-%m-%d %R:%S")
+plot(householdPowerConsumption$Time, householdPowerConsumption$Global_active_power)
