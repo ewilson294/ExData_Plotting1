@@ -26,11 +26,9 @@ png(filename = "plot3.png", height = 480, width = 480)
 with(householdPowerConsumption, {
     plot(Time, Sub_metering_1, pch = NA_integer_, ylab = "Energy sub metering", type = "n")
     lines(Time, Sub_metering_1, col = "black")
-    #plot(Time, Sub_metering_2, pch = NA_integer_)
     lines(Time, Sub_metering_2, col = "red")
-    #plot(Time, Sub_metering_3, pch = NA_integer_)
     lines(Time, Sub_metering_3, col = "blue")
-    legend("topright", legend = c(Sub_metering_1, Sub_metering_2, Sub_metering_3))
+    legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty = 1, col = c("black", "red", "blue"))
 }
 )
 dev.off()
