@@ -2,7 +2,12 @@
 # Author: Eric Wilson
 # Date Created: 6 June 2021
 
-householdPowerConsumption <- read.table("household_power_consumption.txt", header = TRUE, sep = ";")
+# Download data and read into table
+url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+temporary <- tempfile()
+download.file(url, temporary)
+householdPowerConsumption <- read.table(unzip(temporary), header = TRUE, sep = ";")
+unlink(temporary)
 # Convert characters in table to numeric values
 householdPowerConsumption[,3:9] <- sapply(householdPowerConsumption[,3:9], as.numeric)
 # Convert date characters to date objects
@@ -17,7 +22,7 @@ for (tau in 1:length(householdPowerConsumption$Time)) {
 householdPowerConsumption$Time <- strptime(householdPowerConsumption$Time, format = "%Y-%m-%d %R:%S")
 
 # Construct Plot
-png(filename = "plot1.png", height = 480, width = 480)
+png(filename = "plot2.png", height = 480, width = 480)
 with(householdPowerConsumption, plot(Time, Global_active_power, ylab = "Global Active Power (kilowatts)", pch = NA_integer_))
 lines(householdPowerConsumption$Time, householdPowerConsumption$Global_active_power)
 dev.off()
