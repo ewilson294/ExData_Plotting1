@@ -2,7 +2,12 @@
 # Author: Eric Wilson
 # Date Created: 5 June 2021
 
-householdPowerConsumption <- read.table("household_power_consumption.txt", header = TRUE, sep = ";")
+# Download data and read into table
+url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+temporary <- tempfile()
+download.file(url, temporary)
+householdPowerConsumption <- read.table(unzip(temporary), header = TRUE, sep = ";")
+unlink(temporary)
 # Convert characters in table to numeric values
 householdPowerConsumption[,3:9] <- sapply(householdPowerConsumption[,3:9], as.numeric)
 # Convert date characters to date objects
