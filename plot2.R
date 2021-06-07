@@ -15,4 +15,9 @@ for (tau in 1:length(householdPowerConsumption$Time)) {
     householdPowerConsumption$Time[tau] <- time
 }
 householdPowerConsumption$Time <- strptime(householdPowerConsumption$Time, format = "%Y-%m-%d %R:%S")
-plot(householdPowerConsumption$Time, householdPowerConsumption$Global_active_power)
+
+# Construct Plot
+png(filename = "plot1.png", height = 480, width = 480)
+with(householdPowerConsumption, plot(Time, Global_active_power, ylab = "Global Active Power (kilowatts)", pch = NA_integer_))
+lines(householdPowerConsumption$Time, householdPowerConsumption$Global_active_power)
+dev.off()
